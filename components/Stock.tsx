@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import config from "../config/config.json";
+<<<<<<< HEAD
 
 export default function StockList() {
+=======
+import { Base, Typography } from '../styles/index.js';
+
+
+export default function StockList():Object {
+>>>>>>> a8aeca5 (finished for kmom02)
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -11,15 +18,23 @@ export default function StockList() {
             .then(result => setProducts(result.data));
     }, []);
 
+<<<<<<< HEAD
     const list = products.map((product, index) => <Text style={styles.productList} key={index}>{ product.name } {product.stock}</Text>);
 
     return (
         <View>
             <Text style={styles.productHeader}>Inventory</Text>
+=======
+    const list = products.map((product, index) => <Text style={Base.productList} key={index}>{ product.name } {product.stock}</Text>);
+
+    return (
+        <View>
+>>>>>>> a8aeca5 (finished for kmom02)
             {list}
         </View>
     );
 }
+<<<<<<< HEAD
 
 const styles = StyleSheet.create({
     productList: {
@@ -37,3 +52,5 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     }
 })
+=======
+>>>>>>> a8aeca5 (finished for kmom02)
