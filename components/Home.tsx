@@ -4,16 +4,15 @@ import keyboard from '../assets/keyboard.jpg';
 import Stock from './Stock.tsx';
 import StockList from './Stock.tsx';
 import { Base, Typography } from '../styles';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 
 export default function Home(){
     return (
-        <View style={Base.container}>
-        <ScrollView style={Base.base}>
-              <Text style={Base.header}>Custom Keyboards</Text>
-              <Image style={Base.image} source={keyboard} />
-              <StockList />
-        </ScrollView>
-        </View>
+        <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Stock" component={StockList}/>
+        </Stack.Navigator>
         );
 }

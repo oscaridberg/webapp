@@ -25,7 +25,7 @@ export default function OrderList({ route, navigation }): Object {
     const list = checkOrderStatus({ navigation }, orders)
     return (
         <View style={Base.buttonContainer}>
-            <Text>Ready to be picked</Text>
+            <Text style={Base.listTitle}>Ready to be picked</Text>
             {list}
         </View>
     );
