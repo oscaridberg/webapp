@@ -47,7 +47,7 @@ export const productHeader = {
 };
 
 export const button = {
-    width: 300,
+    width: '90%',
     backgroundColor: 'pink',
     height: 50,
     justifyContent: 'center',
@@ -73,3 +73,43 @@ export const noStock = {
     fontSize: 20,
     padding: 10
 };
+
+export const delivery = {
+    width: '90%',
+    backgroundColor: 'pink',
+    justifyContent: 'center',
+    margin: 'auto',
+    marginBottom: 10,
+    padding: 5,
+}
+
+export const deliveryContent = {
+    fontSize: 28,
+}
+
+export const listTitle = {
+    fontSize: 18,
+    backgroundColor: 'white',
+    marginBottom: 10,
+    padding: 5,
+    width: '90%',
+    textAlign: 'center'
+}
+
+export const deliveryButtonContainer = {
+    backgroundColor: 'white',
+    backgroundImage: 'linear-gradient(#fff, #eee)',
+    textDecoration: 'none',
+    padding: 5,
+    textAlign: 'center',
+    borderRadius: 2,
+    marginBottom: 10,
+    // width: '85%',
+}
+
+export const deliveryButtonContent = {
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center'
+
+}

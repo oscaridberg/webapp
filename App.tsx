@@ -4,6 +4,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import Pick from './components/Pick.tsx';
 import Home from './components/Home.tsx';
+import Delivery from './components/Deliveries.tsx';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Base, Typography } from './styles/index.js';
@@ -12,6 +13,7 @@ const Tab = createBottomTabNavigator();
 const routeIcons = {
   "Inventory": "home",
   "Pick Order": "list",
+  "Deliveries": "cube",
 };
 
 export default function App() {
@@ -29,6 +31,7 @@ export default function App() {
         >
               <Tab.Screen name="Inventory" component={Home} />
               <Tab.Screen name="Pick Order" component={Pick} />
+              <Tab.Screen name="Deliveries" component={Delivery} />
             </Tab.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
