@@ -3,6 +3,7 @@ export const base = {
 };
 
 export const input = {
+    backgroundColor: '#ddd',
     fontSize: 20,
     marginBottom: 28,
     borderWidth: 1,

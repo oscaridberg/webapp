@@ -30,6 +30,7 @@ export default function DeliveryForm({ navigation }): Object {
             <Text style={Base.header}>New delivery</Text>
             <Text style={Forms.inputLabel}>Product:</Text>
             <ProductDropDown
+                style={Forms.input}
                 delivery={delivery}
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
