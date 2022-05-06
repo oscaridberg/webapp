@@ -23,6 +23,8 @@ export default function OrderList({ route, navigation }): Object {
     }, []);
 
     const list = checkOrderStatus({ navigation }, orders)
+    console.log(typeof(list));
+
     return (
         <View style={Base.buttonContainer}>
             <Text style={Base.listTitle}>Ready to be picked</Text>
@@ -36,7 +38,7 @@ function checkOrderStatus({ navigation }, orders):List {
 
     for (const order of orders) {
         if (order.status_id === 100) {
-            list.push(<Pressable style={Base.button} title={order.name} key={order.id} onPress={() => navigation.navigate('Details', { order: order})}><Text style={Base.buttonContents}>{order.name}</Text></Pressable>);
+            list.push(<Pressable style={Base.pressable} title={order.name} key={order.id} onPress={() => navigation.navigate('Details', { order: order})}><Text style={Base.button_text}>{order.name}</Text></Pressable>);
         };
     }
     return list;

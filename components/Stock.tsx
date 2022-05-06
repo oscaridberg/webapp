@@ -21,7 +21,7 @@ export default function StockList({ route, navigation }):Object {
     };
 
     reloadProducts();
-    
+
     useEffect(() => {
         fetch(`${config.base_url}/products?api_key=${config.api_key}`)
             .then(response => response.json())
@@ -31,9 +31,9 @@ export default function StockList({ route, navigation }):Object {
     const list = products2List({ navigation }, products);
 
     return (
-        <View style={Base.container}>
+        <View style={Base.buttonContainer}>
         <ScrollView style={Base.base}>
-              <Text style={Base.header}>Custom Keyboards</Text>
+              <Text style={Base.listTitle}>Custom Keyboards</Text>
               <Image style={Base.image} source={keyboard} />
               {list}
         </ScrollView>

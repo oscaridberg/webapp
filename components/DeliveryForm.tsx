@@ -27,7 +27,8 @@ export default function DeliveryForm({ navigation }): Object {
 
     return (
         <ScrollView>
-            <Text style={Base.header}>New delivery</Text>
+            <View style={Base.buttonContainerNoBg}>
+            <Text style={Base.listTitle}>New delivery</Text>
             <Text style={Forms.inputLabel}>Product:</Text>
             <ProductDropDown
                 style={Forms.input}
@@ -62,12 +63,16 @@ export default function DeliveryForm({ navigation }): Object {
             value={delivery?.comment}
             />
 
-            <Button
+            <Pressable
                 title="Add Delivery"
                 onPress={() => {
                     addDelivery();
                 }}
-            />
+                style={Base.pressable}
+            >
+            <Text style={Base.button_text}>Add delivery</Text>
+            </Pressable>
+            </View>
         </ScrollView>
     )
 }

@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 export default function Pick():Object {
     return (
         <Stack.Navigator initialRouteName="List">
-            <Stack.Screen name="List" component={OrderList}/>
+            <Stack.Screen name="Pick Orders" component={OrderList}/>
             <Stack.Screen name="Details" component={PickList}/>
         </Stack.Navigator>
     );
