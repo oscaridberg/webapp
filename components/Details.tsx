@@ -9,8 +9,8 @@ export default function PickList({ route, navigation }):Object {
 
     async function pick(): Void {
         await orderModel.pickOrder(order);
-        await orderModel.updateOrderStatus(order);
-        navigation.navigate("List", { reload: true });
+        await orderModel.updateOrderStatus(order, 200);
+        navigation.navigate("Pick Orders", { reload: true });
     };
 
     function checkInventory(order:Object):Object {

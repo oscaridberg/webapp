@@ -31,12 +31,12 @@ const orders = {
         }
     },
 
-    updateOrderStatus: async function updateOrderStatus(order:Object):Void {
+    updateOrderStatus: async function updateOrderStatus(order:Object, status:Int):Void {
         const dataObject = {
             id:order.id,
             name:order.name,
             api_key:config.api_key,
-            status_id:200
+            status_id:status
         };
 
         let json = JSON.stringify(dataObject);
@@ -44,6 +44,13 @@ const orders = {
         request.open("Put", `${config.base_url}/orders`);
         request.setRequestHeader('Content-type','application/json; charset=utf-8');
         request.send(json);
+    },
+
+    getOrder: async function getOrder(orderId:int) {
+        const response = await fetch(`${config.base_url}/orders/${orderId}?api_key=${config.api_key}`);
+        const result = await response.json();
+
+        return result.data;
     }
 }
 

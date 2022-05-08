@@ -3,6 +3,7 @@ export const base = {
 };
 
 export const input = {
+    backgroundColor: '#ddd',
     fontSize: 20,
     marginBottom: 28,
     borderWidth: 1,
@@ -10,7 +11,8 @@ export const input = {
     borderColor: "#ccc",
     borderRadius: 3,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
+    width: '90%'
 };
 
 export const date = {
@@ -21,6 +23,8 @@ export const date = {
 };
 
 export const inputLabel = {
+    marginTop: 10,
     fontWeight: 'bold',
-    marginLeft: 10
+    textAlign: 'left',
+    width: '90%'
 }

@@ -35,7 +35,7 @@ export default function DeliveryList({ route, navigation }): Object {
         <View style={Base.buttonContainer}>
         <Text style={Base.listTitle}>{deliveryStatus}</Text>
         {list}
-        <Pressable style={Base.deliveryButtonContainer} onPress={() => navigation.navigate('DeliveryForm')}><Text style={Base.deliveryButtonContent}>Create new delivery</Text></Pressable>
+        <Pressable style={Base.pressable} onPress={() => navigation.navigate('DeliveryForm')}><Text style={Base.button_text}>Create new delivery</Text></Pressable>
         </View>
     </ScrollView>
     );

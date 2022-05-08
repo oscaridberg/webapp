@@ -8,16 +8,33 @@ import Delivery from './components/Deliveries.tsx';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Base, Typography } from './styles/index.js';
+import { useState, useEffect } from 'react';
+import Auth from './components/auth/Auth.tsx';
+import authModel from './models/auth.ts';
+import Invoices from './components/auth/Invoices.tsx'
+import CreateInvoice from './components/auth/CreateInvoice.tsx';
+
+
 
 const Tab = createBottomTabNavigator();
+
 const routeIcons = {
-  "Inventory": "home",
-  "Pick Order": "list",
-  "Deliveries": "cube",
+  "Inventory":      "home",
+  "Pick Order":     "list",
+  "Deliveries":     "cube",
+  "Login":          "key",
+  "Invoices":       "copy"
 };
 
+
 export default function App() {
-  return (
+    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
+
+    useEffect(async () => {
+        setIsLoggedIn(await authModel.loggedIn())
+    }, []);
+
+    return (
     <SafeAreaView style={Base.container}>
         <NavigationContainer>
             <Tab.Navigator screenOptions={({ route }) => ({
@@ -27,11 +44,18 @@ export default function App() {
             },
             tabBarActiveTintColor: 'pink',
             tabBarInactiveTintColor: 'gray',
+            headerShown: false
           })}
         >
-              <Tab.Screen name="Inventory" component={Home} />
-              <Tab.Screen name="Pick Order" component={Pick} />
-              <Tab.Screen name="Deliveries" component={Delivery} />
+            <Tab.Screen name="Inventory" component={Home}/>
+            <Tab.Screen name="Pick Order" component={Pick} />
+            <Tab.Screen name="Deliveries" component={Delivery} />
+            {isLoggedIn ?
+                <Tab.Screen name="Invoices" component={Invoices} /> :
+                <Tab.Screen name="Login">
+                  {() => <Auth setIsLoggedIn={setIsLoggedIn}/>}
+                </Tab.Screen>
+            }
             </Tab.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />

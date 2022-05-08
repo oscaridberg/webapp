@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 export default function Deliveries(): Object {
     return (
         <Stack.Navigator initialRouteName="List">
-            <Stack.Screen name="List" component={DeliveryList}/>
+            <Stack.Screen name="Deliveries" component={DeliveryList}/>
             <Stack.Screen name="DeliveryForm" component={DeliveryForm}/>
         </Stack.Navigator>
     );

@@ -14,6 +14,8 @@ export const image = {
 export const base = {
   flex: 1,
   backgroundColor: 'teal',
+  width: '100%',
+
 };
 
 export const header = {
@@ -25,6 +27,12 @@ export const header = {
   paddingRight: 12,
   marginBottom: 5,
 };
+
+export const secondaryHeader = {
+    width: "90%",
+    color: 'white',
+    fontSize: 24
+}
 
 export const tab = {
   backgroundColor: 'red'
@@ -63,8 +71,12 @@ export const buttonContents = {
 export const buttonContainer = {
   flex: 1,
   backgroundColor: 'teal',
-  justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+};
+
+export const buttonContainerNoBg = {
+  flex: 1,
+  alignItems: 'center',
 };
 
 export const noStock = {
@@ -92,8 +104,9 @@ export const listTitle = {
     backgroundColor: 'white',
     marginBottom: 10,
     padding: 5,
-    width: '90%',
-    textAlign: 'center'
+    width: '100%',
+    textAlign: 'center',
+    color: 'black'
 }
 
 export const deliveryButtonContainer = {
@@ -112,4 +125,32 @@ export const deliveryButtonContent = {
     fontSize: 20,
     textAlign: 'center'
 
+}
+
+export const pressable = {
+    backgroundColor: 'pink',
+    width: '90%',
+    textAlign: 'center',
+    padding: 10,
+    borderRadius: 30,
+    marginBottom: 10
+}
+
+export const button_logout = {
+    backgroundColor: 'red',
+    width: '90%',
+    textAlign: 'center',
+    padding: 10,
+    borderRadius: 30,
+    marginBottom: 10
+}
+
+
+export const button_text = {
+    textAlign: 'center',
+    color: 'white'
+}
+
+export const test = {
+    backgroundColor: 'red'
 }
