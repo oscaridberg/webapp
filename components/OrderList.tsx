@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Text, View, Pressable, Alert } from 'react-native';
+import { ScrollView, Text, View, Pressable, Alert } from 'react-native';
 import config from "../config/config.json";
 import { Base, Typography } from '../styles/';
 import orderModel from '../models/order.ts';
@@ -28,10 +28,15 @@ export default function OrderList({ route, navigation }): Object {
     const list = checkOrderStatus({ navigation }, orders)
 
     return (
+        <ScrollView style={Base.base}>
+
         <View style={Base.buttonContainer}>
-            <Text style={Base.listTitle}>Ready to be picked</Text>
+        <Text style={Base.listTitle}>Ready to be picked</Text>
+
             {list}
         </View>
+        </ScrollView>
+        
     );
 }
 

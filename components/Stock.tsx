@@ -32,11 +32,12 @@ export default function StockList({ route, navigation }):Object {
 
     return (
         <View style={Base.buttonContainer}>
-        <ScrollView style={Base.base}>
-              <Text style={Base.listTitle}>Custom Keyboards</Text>
-              <Image style={Base.image} source={keyboard} />
-              {list}
-        </ScrollView>
+            <Text style={Base.listTitle}>Custom Keyboards</Text>
+
+            <ScrollView style={Base.base}>
+                  <Image style={Base.image} source={keyboard} />
+                  {list}
+            </ScrollView>
         </View>
     );
 }

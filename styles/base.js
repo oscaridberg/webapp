@@ -14,6 +14,8 @@ export const image = {
 export const base = {
   flex: 1,
   backgroundColor: 'teal',
+  width: '100%',
+
 };
 
 export const header = {
@@ -102,7 +104,7 @@ export const listTitle = {
     backgroundColor: 'white',
     marginBottom: 10,
     padding: 5,
-    width: '90%',
+    width: '100%',
     textAlign: 'center',
     color: 'black'
 }

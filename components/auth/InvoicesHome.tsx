@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Text, View, Pressable, Alert, Button } from 'react-native';
+import { Text, View, Pressable, Alert, Button, ScrollView } from 'react-native';
 import config from "../../config/config.json";
-import { Base, Typography } from '../../styles/';
+import { Base, Typography, Table } from '../../styles/';
 import invoiceModel from '../../models/invoices.ts';
 import orderModel from '../../models/order.ts';
 import authModel from '../../models/auth.ts';
@@ -48,14 +48,14 @@ export default function InvoicesHome({route, navigation, isLoggedIn}): Object {
             return (
                 <DataTable.Row key={index}>
                     <DataTable.Cell>{invoice.name}</DataTable.Cell>
-                    <DataTable.Cell>{invoice.price}</DataTable.Cell>
+                    <DataTable.Cell style={Table.number}>{invoice.price}</DataTable.Cell>
                     <DataTable.Cell>{invoice.due}</DataTable.Cell>
                 </DataTable.Row>
             )
         });
 
         return (
-            <DataTable>
+            <DataTable style={Table.base}>
                 <DataTable.Header>
                     <DataTable.Title>Name</DataTable.Title>
                     <DataTable.Title>Price</DataTable.Title>
@@ -67,6 +67,8 @@ export default function InvoicesHome({route, navigation, isLoggedIn}): Object {
         );
     };
     return (
+        <ScrollView style={Base.base}>
+
         <View style={Base.buttonContainer}>
             <Text style={Base.listTitle}>Sent invoices</Text>
             {table}
@@ -90,5 +92,7 @@ export default function InvoicesHome({route, navigation, isLoggedIn}): Object {
             <Text style={Base.button_text}>Logout</Text>
             </Pressable>
         </View>
+        </ScrollView>
+
     );
 }
