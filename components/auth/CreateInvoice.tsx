@@ -15,8 +15,11 @@ export default function CreateInvoice({route, navigation}): Object {
     const [currentOrder, setCurrentOrder] = useState<Partial<Order>>({});
 
     async function addInvoice() {
-        
-    }
+        invoiceModel.addInvoice(invoice);
+
+        navigation.navigate("Invoices");
+    };
+
 
     useEffect(() => {
         fetch(`${config.base_url}/orders?api_key=${config.api_key}`)
@@ -54,7 +57,11 @@ export default function CreateInvoice({route, navigation}): Object {
                 setCurrentOrder={setCurrentOrder}
             />
 
-            <Pressable style={Base.pressable}>
+            <Pressable style={Base.pressable}
+            onPress={() => {
+                addInvoice();
+            }}
+            >
                 <Text style={Base.button_text}>Send invoice</Text>
             </Pressable>
         </View>
@@ -72,8 +79,6 @@ function OrderDropDown(props) {
     useEffect(async () => {
         setOrders(await orderModel.getOrders());
     }, []);
-
-    console.log(orders);
 
 
 

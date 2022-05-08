@@ -12,7 +12,6 @@ const Stack = createNativeStackNavigator();
 
 
 export default function Invoices({route, navigation}) {
-
     return (
         <Stack.Navigator>
             <Stack.Screen name="Invoices" component={InvoicesHome} />

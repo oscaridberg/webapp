@@ -22,8 +22,10 @@ export default function OrderList({ route, navigation }): Object {
             .then(result => setOrders(result.data));
     }, []);
 
+    console.log(orders);
+
+
     const list = checkOrderStatus({ navigation }, orders)
-    console.log(typeof(list));
 
     return (
         <View style={Base.buttonContainer}>
