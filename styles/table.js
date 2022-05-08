@@ -3,6 +3,6 @@ export const base = {
     marginBottom: 20,
 };
 
-export const title = {
-    fontWeight: 'bold'
+export const number = {
+    paddingLeft: 5,
 }

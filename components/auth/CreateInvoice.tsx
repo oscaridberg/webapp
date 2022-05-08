@@ -17,7 +17,7 @@ export default function CreateInvoice({route, navigation}): Object {
     async function addInvoice() {
         invoiceModel.addInvoice(invoice);
 
-        navigation.navigate("Invoices");
+        navigation.navigate("Invoices", { reload: true });
     };
 
 

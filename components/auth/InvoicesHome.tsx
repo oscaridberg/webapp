@@ -12,8 +12,14 @@ import storage from "../../models/storage.ts";
 export default function InvoicesHome({route, navigation, isLoggedIn}): Object {
     const [deliveries, setDeliveries] = useState([]);
     const [table, setTable] = useState([]);
+    const { reload } = route.params || false;
+
 
     let invoices;
+
+    if (reload) {
+        reloadInvoices();
+    };
 
     useEffect (async () => {
         const token = await storage.readToken();
@@ -31,8 +37,7 @@ export default function InvoicesHome({route, navigation, isLoggedIn}): Object {
     }, []);
 
     async function reloadInvoices() {
-        setInvoices(await invoiceModel.getInvoices());
-        invoicesTable(invoices);
+        invoices = await invoiceModel.getInvoices();
     }
 
     function invoicesTable(data) {
@@ -47,9 +52,9 @@ export default function InvoicesHome({route, navigation, isLoggedIn}): Object {
         const table = invoiceTable.map((invoice, index) => {
             return (
                 <DataTable.Row key={index}>
-                    <DataTable.Cell>{invoice.name}</DataTable.Cell>
-                    <DataTable.Cell style={Table.number}>{invoice.price}</DataTable.Cell>
-                    <DataTable.Cell>{invoice.due}</DataTable.Cell>
+                    <DataTable.Cell><Text>{invoice.name}</Text></DataTable.Cell>
+                    <DataTable.Cell style={Table.number}><Text >{invoice.price}</Text></DataTable.Cell>
+                    <DataTable.Cell><Text>{invoice.due}</Text></DataTable.Cell>
                 </DataTable.Row>
             )
         });
