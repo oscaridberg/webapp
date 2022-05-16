@@ -36,12 +36,13 @@ export default function OrderList({ route, navigation }): Object {
             {list}
         </View>
         </ScrollView>
-        
+
     );
 }
 
 function checkOrderStatus({ navigation }, orders):List {
     let list:List = [];
+    console.log('test');
 
     for (const order of orders) {
         if (order.status_id === 100) {

@@ -13,6 +13,7 @@ import Auth from './components/auth/Auth.tsx';
 import authModel from './models/auth.ts';
 import Invoices from './components/auth/Invoices.tsx'
 import CreateInvoice from './components/auth/CreateInvoice.tsx';
+import Ship from './components/Ship.tsx';
 
 
 
@@ -23,7 +24,8 @@ const routeIcons = {
   "Pick Order":     "list",
   "Deliveries":     "cube",
   "Login":          "key",
-  "Invoices":       "copy"
+  "Invoices":       "copy",
+  "Ship":           "map"
 };
 
 
@@ -56,6 +58,7 @@ export default function App() {
                   {() => <Auth setIsLoggedIn={setIsLoggedIn}/>}
                 </Tab.Screen>
             }
+            <Tab.Screen name="Ship" component={Ship}/>
             </Tab.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
