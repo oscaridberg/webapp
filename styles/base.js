@@ -154,3 +154,22 @@ export const button_text = {
 export const test = {
     backgroundColor: 'red'
 }
+
+export const mapTitle = {
+    fontSize: 18,
+    backgroundColor: 'white',
+    fontWeight: 'bold',
+    padding: 5,
+    width: '100%',
+    textAlign: 'center',
+    color: 'black'
+}
+
+export const mapInfo = {
+    fontSize: 18,
+    backgroundColor: 'white',
+    padding: 5,
+    width: '100%',
+    textAlign: 'center',
+    color: 'black'
+}
