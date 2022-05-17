@@ -9,7 +9,6 @@ const deliveries = {
     },
 
     addDelivery: async function addDelivery(delivery: Object): Void {
-        console.log(delivery.delivery_date);
 
         const deliveryObject = {
             product_id: delivery.product_id,
@@ -19,7 +18,7 @@ const deliveries = {
             comment: delivery.comment ?? null
         };
 
-        fetch(`${config.base_url}/deliveries`, {
+        const response = await fetch(`${config.base_url}/deliveries`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -27,6 +26,22 @@ const deliveries = {
             },
             body: JSON.stringify(deliveryObject)
         });
+
+        const result = await response.json();
+
+        if (Object.prototype.hasOwnProperty.call(result, 'errors')) {
+            return {
+                title: result.errors.title,
+                message: result.errors.detail,
+                type: "danger",
+            };
+        }
+
+        return {
+            title: "Delivery added",
+            message: result.data.message,
+            type: "success",
+        };
     },
 }
 

@@ -22,9 +22,6 @@ export default function OrderList({ route, navigation }): Object {
             .then(result => setOrders(result.data));
     }, []);
 
-    console.log(orders);
-
-
     const list = checkOrderStatus({ navigation }, orders)
 
     return (
