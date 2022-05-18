@@ -31,14 +31,16 @@ const routeIcons = {
 
 export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
+    const [deliveries, setDeliveries] = useState([]);
 
     useEffect(async () => {
         setIsLoggedIn(await authModel.loggedIn())
     }, []);
 
     return (
+        <SafeAreaView style={Base.container}>
+
         <NavigationContainer>
-            <SafeAreaView style={Base.container}>
 
                 <Tab.Navigator screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
@@ -52,7 +54,9 @@ export default function App() {
             >
                 <Tab.Screen name="Inventory" component={Home}/>
                 <Tab.Screen name="Pick Order" component={Pick} />
-                <Tab.Screen name="Deliveries" component={Delivery} />
+                <Tab.Screen name="Deliveries">
+                    {() => <Delivery deliveries={deliveries} setDeliveries={setDeliveries}/>}
+                </Tab.Screen>
                 {isLoggedIn ?
                     <Tab.Screen name="Invoices" component={Invoices} /> :
                     <Tab.Screen name="Login">
@@ -61,10 +65,12 @@ export default function App() {
                 }
                 <Tab.Screen name="Ship" component={Ship}/>
                 </Tab.Navigator>
-                <StatusBar style="auto" />
-                <FlashMessage position="top" />
-            </SafeAreaView>
+
         </NavigationContainer>
+        <StatusBar style="auto" />
+        <FlashMessage position="top" />
+        </SafeAreaView>
+
 
   );
 }

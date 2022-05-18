@@ -10,11 +10,16 @@ import DeliveryForm from './DeliveryForm';
 
 const Stack = createNativeStackNavigator();
 
-export default function Deliveries(): Object {
+export default function Deliveries({deliveries, setDeliveries, navigation}): Object {
+
     return (
         <Stack.Navigator initialRouteName="List">
-            <Stack.Screen name="Deliveries" component={DeliveryList}/>
+            <Stack.Screen name="Deliveries">
+                {(screenProps) => <DeliveryList {...screenProps} deliveries={deliveries} setDeliveries={setDeliveries} />}
+            </Stack.Screen>
+
             <Stack.Screen name="DeliveryForm" component={DeliveryForm}/>
         </Stack.Navigator>
     );
 };
+            // <Stack.Screen name="Deliveries" component={DeliveryList}/>
