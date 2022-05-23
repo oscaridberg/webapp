@@ -14,7 +14,7 @@ import authModel from './models/auth.ts';
 import Invoices from './components/auth/Invoices.tsx'
 import CreateInvoice from './components/auth/CreateInvoice.tsx';
 import Ship from './components/Ship.tsx';
-
+import FlashMessage from 'react-native-flash-message';
 
 
 const Tab = createBottomTabNavigator();
@@ -31,37 +31,46 @@ const routeIcons = {
 
 export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
+    const [deliveries, setDeliveries] = useState([]);
 
     useEffect(async () => {
         setIsLoggedIn(await authModel.loggedIn())
     }, []);
 
     return (
-    <SafeAreaView style={Base.container}>
+        <SafeAreaView style={Base.container}>
+
         <NavigationContainer>
-            <Tab.Navigator screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused, color, size }) => {
-                  let iconName = routeIcons[route.name] || "alert";
-                  return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: 'pink',
-            tabBarInactiveTintColor: 'gray',
-            headerShown: false
-          })}
-        >
-            <Tab.Screen name="Inventory" component={Home}/>
-            <Tab.Screen name="Pick Order" component={Pick} />
-            <Tab.Screen name="Deliveries" component={Delivery} />
-            {isLoggedIn ?
-                <Tab.Screen name="Invoices" component={Invoices} /> :
-                <Tab.Screen name="Login">
-                  {() => <Auth setIsLoggedIn={setIsLoggedIn}/>}
+
+                <Tab.Navigator screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused, color, size }) => {
+                      let iconName = routeIcons[route.name] || "alert";
+                      return <Ionicons name={iconName} size={size} color={color} />;
+                },
+                tabBarActiveTintColor: 'pink',
+                tabBarInactiveTintColor: 'gray',
+                headerShown: false
+              })}
+            >
+                <Tab.Screen name="Inventory" component={Home}/>
+                <Tab.Screen name="Pick Order" component={Pick} />
+                <Tab.Screen name="Deliveries">
+                    {() => <Delivery deliveries={deliveries} setDeliveries={setDeliveries}/>}
                 </Tab.Screen>
-            }
-            <Tab.Screen name="Ship" component={Ship}/>
-            </Tab.Navigator>
+                {isLoggedIn ?
+                    <Tab.Screen name="Invoices" component={Invoices} /> :
+                    <Tab.Screen name="Login">
+                      {() => <Auth setIsLoggedIn={setIsLoggedIn}/>}
+                    </Tab.Screen>
+                }
+                <Tab.Screen name="Ship" component={Ship}/>
+                </Tab.Navigator>
+
         </NavigationContainer>
         <StatusBar style="auto" />
-    </SafeAreaView>
+        <FlashMessage position="top" />
+        </SafeAreaView>
+
+
   );
 }

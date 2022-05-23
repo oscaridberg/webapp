@@ -4,9 +4,9 @@ import config from "../config/config.json";
 import { Base, Typography, Forms } from '../styles/';
 import deliveryModel from '../models/delivery.ts';
 
-export default function DeliveryList({ route, navigation }): Object {
+export default function DeliveryList({ deliveries, setDeliveries, route=false, navigation}): Object {
     const { reload } = route.params || false;
-    const [deliveries, setDeliveries] = useState([]);
+    // const [deliveries, setDeliveries] = useState([]);
     let deliveryStatus:Str = '';
 
     if (reload) {
@@ -23,7 +23,8 @@ export default function DeliveryList({ route, navigation }): Object {
             .then(result => setDeliveries(result.data));
     }, []);
 
-    const list = checkDeliveries({ navigation }, deliveries);
+    const list = checkDeliveries(deliveries);
+
 
     if (list.length > 0) {
         deliveryStatus = 'Incoming Deliveries';
@@ -41,7 +42,7 @@ export default function DeliveryList({ route, navigation }): Object {
     );
 }
 
-function checkDeliveries({ navigation }, deliveries): List {
+function checkDeliveries(deliveries): List {
     let list:List = [];
 
     for (const delivery of deliveries) {

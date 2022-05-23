@@ -4,7 +4,7 @@ import config from "../config/config.json";
 import { Base, Typography } from '../styles/';
 import orderModel from '../models/order.ts';
 
-export default function OrderList({ route, navigation }): Object {
+export default function OrderList({ route=false, navigation }): Object {
     const { reload } = route.params || false;
     const [orders, setOrders] = useState([]);
 
@@ -21,9 +21,6 @@ export default function OrderList({ route, navigation }): Object {
             .then(response => response.json())
             .then(result => setOrders(result.data));
     }, []);
-
-    console.log(orders);
-
 
     const list = checkOrderStatus({ navigation }, orders)
 
@@ -42,7 +39,6 @@ export default function OrderList({ route, navigation }): Object {
 
 function checkOrderStatus({ navigation }, orders):List {
     let list:List = [];
-    console.log('test');
 
     for (const order of orders) {
         if (order.status_id === 100) {

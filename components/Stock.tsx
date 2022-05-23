@@ -4,10 +4,10 @@ import config from "../config/config.json";
 import { Base, Typography } from '../styles/index.js';
 import productModel from '../models/products.ts';
 import keyboard from '../assets/keyboard.jpg';
+import StockList from './StockList.tsx';
 
 
-
-export default function StockList({ route, navigation }):Object {
+export default function Stock({ route, navigation }):Object {
     const { reload } = route.params || false;
 
     const [products, setProducts] = useState([]);
@@ -28,7 +28,7 @@ export default function StockList({ route, navigation }):Object {
             .then(result => setProducts(result.data));
     }, []);
 
-    const list = products2List({ navigation }, products);
+    const list = StockList({ navigation }, products);
 
     return (
         <View style={Base.buttonContainer}>
@@ -42,9 +42,9 @@ export default function StockList({ route, navigation }):Object {
     );
 }
 
-function products2List({ navigation }, products): List {
-    let list:List = [];
-    list.push(products.map((product, index) => <Text style={Base.productList} key={index}>{ product.name } {product.stock}</Text>));
-
-    return list;
-}
+// function StockList({ navigation }, products): List {
+//     let list:List = [];
+//     list.push(products.map((product, index) => <Text style={Base.productList} key={index}>{ product.name } {product.stock}</Text>));
+//
+//     return list;
+// }

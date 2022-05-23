@@ -7,13 +7,15 @@ import { Picker } from '@react-native-picker/picker';
 import productModel from "../models/products.ts";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Moment from 'react-moment';
+import { showMessage } from "react-native-flash-message";
+
 
 export default function DeliveryForm({ navigation }): Object {
     const [delivery, setDelivery] = useState<Partial<Delivery>>({});
     const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({});
 
     async function addDelivery() {
-        await deliveryModel.addDelivery(delivery);
+        const result = await deliveryModel.addDelivery(delivery);
 
         const updatedProduct = {
             ...currentProduct,
@@ -22,7 +24,15 @@ export default function DeliveryForm({ navigation }): Object {
 
         await productModel.updatedProduct(updatedProduct);
 
-        navigation.navigate("List", { reload: true });
+        if (result.type === "success"){
+            navigation.navigate("Deliveries", { reload: true });
+        };
+
+        showMessage({
+            message: result.title,
+            description: result.message,
+            type: result.type,
+        });
     }
 
     return (
